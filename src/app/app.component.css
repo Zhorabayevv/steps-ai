@@ -1,7 +1,22 @@
+.main {
+  width: 1610px;
+  background-color: #fff;
+  margin: 30px auto;
+  border-radius: 4px;
+}
+.title {
+  margin-left: 16px;
+}
+.footer {
+  height: 40px;
+  background-color: #f9fafa;
+  border-radius: 0 0 4px 4px;
+}
+
 ::ng-deep .ant-switch {
   background-color: #fff;
   background-image: none;
-  border: 1px solid #e5e5ea ;
+  border: 1px solid #e5e5ea;
 }
 ::ng-deep .ant-switch-checked {
   background: #1890ff !important;

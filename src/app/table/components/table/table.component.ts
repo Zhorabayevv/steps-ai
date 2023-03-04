@@ -110,12 +110,13 @@ export class TableComponent implements OnInit {
         );
         break;
       case 'availability':
-        console.log(this.searchAvailability);
         this.listOfDisplayData = this.listOfData.filter(
-          (item: TableInterface) => item.availability === (this.searchAvailability ? this.searchAvailability : item.availability)
+          (item: TableInterface) =>
+            item.availability ===
+            (this.searchAvailability
+              ? this.searchAvailability
+              : item.availability)
         );
-        console.log(this.listOfDisplayData);
-
         break;
       case 'quantity':
         this.listOfDisplayData = this.listOfData.filter(

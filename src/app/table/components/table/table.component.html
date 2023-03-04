@@ -39,7 +39,7 @@
                 <nz-input-group
                   [nzSuffix]="suffixIconSearch"
                   *ngIf="data.key !== 'availability'; else availability"
-                  style="margin-bottom: 8px"
+                  class="search-input"
                 >
                   <input
                     type="text"
@@ -54,14 +54,14 @@
                     nzType="close"
                     nzTheme="outline"
                     (click)="reset(data)"
-                    style="cursor: pointer"
+                    class="close-icon"
                   ></span>
                 </ng-template>
                 <ng-template #availability>
-                  <div style="height: 32px">
+                  <div class="switch-div">
                     <nz-switch
                       [(ngModel)]="searchAvailability"
-                      style="margin-right: 10px"
+                      class="switch"
                     ></nz-switch>
                     В наличии
                   </div>
