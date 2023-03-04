@@ -19,11 +19,14 @@
             [(nzVisible)]="data.isSort"
             [nzDropdownMenu]="menu"
           >
-            <span nz-icon nzType="search" *ngIf="data.key !== 'availability'; else customIcon"></span>
+            <span
+              nz-icon
+              nzType="search"
+              *ngIf="data.key !== 'availability'; else customIcon"
+            ></span>
             <ng-template #customIcon>
-              <img src="./../../../../assets/availability.svg" alt="">
+              <img src="./../../../../assets/availability.svg" alt="" />
             </ng-template>
-
           </nz-filter-trigger>
           <nz-dropdown-menu #menu="nzDropdownMenu">
             <div class="ant-table-filter-dropdown">
@@ -33,26 +36,33 @@
                   width: data.key === 'name_of_product' ? '600px' : '270px'
                 }"
               >
-                <!-- <input
+                <nz-input-group
+                  [nzSuffix]="suffixIconSearch"
                   *ngIf="data.key !== 'availability'; else availability"
-                  type="text"
-                  nz-input
-                  placeholder="Search name"
-                  [(ngModel)]="searchValue"
-                /> -->
-                <nz-input-group [nzSuffix]="suffixIconSearch" *ngIf="data.key !== 'availability'; else availability" style="margin-bottom: 8px;">
+                  style="margin-bottom: 8px"
+                >
                   <input
-                  type="text"
-                  nz-input
-                  placeholder="Search name"
-                  [(ngModel)]="searchValue" />
+                    type="text"
+                    nz-input
+                    placeholder="Search name"
+                    [(ngModel)]="searchValue"
+                  />
                 </nz-input-group>
                 <ng-template #suffixIconSearch>
-                  <span nz-icon nzType="close" nzTheme="outline" (click)="reset(data)" style="cursor: pointer;"></span>
+                  <span
+                    nz-icon
+                    nzType="close"
+                    nzTheme="outline"
+                    (click)="reset(data)"
+                    style="cursor: pointer"
+                  ></span>
                 </ng-template>
                 <ng-template #availability>
-                  <div style="height: 32px;">
-                    <nz-switch [(ngModel)]="searchAvailability" style="margin-right: 10px;"></nz-switch>
+                  <div style="height: 32px">
+                    <nz-switch
+                      [(ngModel)]="searchAvailability"
+                      style="margin-right: 10px"
+                    ></nz-switch>
                     В наличии
                   </div>
                 </ng-template>
@@ -81,7 +91,9 @@
       <td>{{ data.vender_code }}</td>
       <td>{{ data.name_of_product }}</td>
       <td>{{ data.price }}</td>
-      <td [ngStyle]="{ color: data.availability ? '#00A0E3' : '#000'}">{{ data.availability ? "В наличии" : "Нет в наличии" }}</td>
+      <td [ngStyle]="{ color: data.availability ? '#00A0E3' : '#000' }">
+        {{ data.availability ? "В наличии" : "Нет в наличии" }}
+      </td>
       <td>{{ data.quantity }}</td>
       <td>{{ data.date_of_delivery }}</td>
     </tr>
