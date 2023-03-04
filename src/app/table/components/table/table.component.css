@@ -3,8 +3,7 @@
 }
 
 .search-box input {
-  width: 188px;
-  margin-bottom: 8px;
+  width: 100%;
   display: block;
 }
 

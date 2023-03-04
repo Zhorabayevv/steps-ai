@@ -1,0 +1,8 @@
+::ng-deep .ant-switch {
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #e5e5ea ;
+}
+::ng-deep .ant-switch-checked {
+  background: #1890ff !important;
+}

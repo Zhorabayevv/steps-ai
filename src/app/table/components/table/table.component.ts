@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TableInterface } from 'src/app/table/types/tableItem.interface';
+import { HeadTableInterface } from 'src/app/table/types/headTable.interface';
 
 @Component({
   selector: 'mc-table',
@@ -9,22 +10,46 @@ import { TableInterface } from 'src/app/table/types/tableItem.interface';
 })
 export class TableComponent implements OnInit {
   searchValue = '';
-  visible = false;
+  searchAvailability: boolean | null = false;
   listOfData: TableInterface[] = [];
-  listOfDisplayData = [...this.listOfData];
-  // headTable = [
-  //   {
-  //     name: 'Бренд',
-
-  //   }
-  //   'Бренд',
-  //   'Артикул',
-  //   'Название товара',
-  //   'Цена',
-  //   'Наличие',
-  //   'Количество',
-  //   'Дата поставки'
-  // ];
+  listOfDisplayData: TableInterface[] = [];
+  headTable = [
+    {
+      name: 'Бренд',
+      key: 'brand',
+      isSort: false,
+    },
+    {
+      name: 'Артикул',
+      key: 'vender_code',
+      isSort: false,
+    },
+    {
+      name: 'Название товара',
+      key: 'name_of_product',
+      isSort: false,
+    },
+    {
+      name: 'Цена',
+      key: 'price',
+      isSort: false,
+    },
+    {
+      name: 'Наличие',
+      key: 'availability',
+      isSort: false,
+    },
+    {
+      name: 'Количество',
+      key: 'quantity',
+      isSort: false,
+    },
+    {
+      name: 'Дата поставки',
+      key: 'date_of_delivery',
+      isSort: false,
+    },
+  ];
 
   constructor() {}
 
@@ -34,27 +59,70 @@ export class TableComponent implements OnInit {
 
   initialValues(): void {
     const data = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
       data.push({
         brand: `Edward King ${i}`,
         vender_code: i,
         name_of_product: `London, Park Lane no. ${i}`,
         price: i,
-        availability: true,
+        availability: i % 2 ? true : false,
         quantity: i,
         date_of_delivery: `2017-07-23`,
       });
     }
     this.listOfData = data;
+    this.listOfDisplayData = [...this.listOfData];
   }
 
-  reset(): void {
-    this.searchValue = '';
-    this.search();
+  reset(data: HeadTableInterface): void {
+    if (data.key === 'availability') {
+      this.searchAvailability = null;
+    } else {
+      this.searchValue = '';
+    }
+    this.search(data);
   }
 
-  search(): void {
-    this.visible = false;
-    this.listOfDisplayData = this.listOfData.filter((item: TableInterface) => item.brand.indexOf(this.searchValue) !== -1);
+  search(data: HeadTableInterface): void {
+    data.isSort = false;
+    switch (data.key) {
+      case 'brand':
+        this.listOfDisplayData = this.listOfData.filter(
+          (item: TableInterface) => item.brand.indexOf(this.searchValue) !== -1
+        );
+        break;
+      case 'vender_code':
+        this.listOfDisplayData = this.listOfData.filter(
+          (item: TableInterface) =>
+            item.vender_code.toString().indexOf(this.searchValue) !== -1
+        );
+        break;
+      case 'name_of_product':
+        this.listOfDisplayData = this.listOfData.filter(
+          (item: TableInterface) =>
+            item.name_of_product.indexOf(this.searchValue) !== -1
+        );
+        break;
+      case 'price':
+        this.listOfDisplayData = this.listOfData.filter(
+          (item: TableInterface) =>
+            item.price.toString().indexOf(this.searchValue) !== -1
+        );
+        break;
+      case 'availability':
+        console.log(this.searchAvailability);
+        this.listOfDisplayData = this.listOfData.filter(
+          (item: TableInterface) => item.availability === (this.searchAvailability ? this.searchAvailability : item.availability)
+        );
+        console.log(this.listOfDisplayData);
+
+        break;
+      case 'quantity':
+        this.listOfDisplayData = this.listOfData.filter(
+          (item: TableInterface) =>
+            item.quantity.toString().indexOf(this.searchValue) !== -1
+        );
+        break;
+    }
   }
 }

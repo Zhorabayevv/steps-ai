@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TableComponent } from 'src/app/table/components/table/table.component';
 import { NgAntModule } from '../ng-ant.module';
@@ -13,7 +14,8 @@ import { NgAntModule } from '../ng-ant.module';
   imports: [
     CommonModule,
     FormsModule,
-    NgAntModule
+    NgAntModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   exports: [TableComponent]
