@@ -1,0 +1,46 @@
+<nz-table
+  #headerTable
+  [nzData]="listOfData"
+  [nzShowPagination]="false"
+  [nzScroll]="{ x: '1610px', y: '240px' }"
+  nzTableLayout="fixed"
+>
+  <thead>
+    <tr>
+      <!-- <th *ngFor="let data of headTable">{{data}}</th> -->
+      <th nzCustomFilter nzWidth="280px">
+        Name
+        <nz-filter-trigger [(nzVisible)]="visible" [nzDropdownMenu]="menu" nz-dropdown nzTrigger="click">
+          <span nz-icon nzType="search"></span>
+        </nz-filter-trigger>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <div class="ant-table-filter-dropdown">
+            <div class="search-box">
+              <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+              <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Search</button>
+              <button nz-button nzSize="small" (click)="reset()">Reset</button>
+            </div>
+          </div>
+        </nz-dropdown-menu>
+      </th>
+      <th nzWidth="280px">Артикул</th>
+      <th nzWidth="610px">Наименование</th>
+      <th nzWidth="280px">Цена</th>
+      <th nzWidth="280px">Наличие</th>
+      <th nzWidth="280px">Количество</th>
+      <th nzWidth="280px">Дата поставки</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of headerTable.data">
+      <td>{{ data.brand }}</td>
+      <td>{{ data.vender_code }}</td>
+      <td>{{ data.name_of_product }}</td>
+      <td>{{ data.price }}</td>
+      <td>{{ data.availability ? "В наличии" : "Нет в наличии" }}</td>
+      <td>{{ data.quantity }}</td>
+      <td>{{ data.date_of_delivery }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+
