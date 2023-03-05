@@ -23,3 +23,27 @@
 .switch{
   margin-right: 10px
 }
+
+::ng-deep .ant-table-body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+::ng-deep .ant-table-body::-webkit-scrollbar
+{
+	width: 12px;
+    height: 12px;
+	background-color: #F5F5F5;
+	border-radius: 0 10px 10px 0;
+}
+::ng-deep .ant-table-body::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #C4C5C6;
+}
+::ng-deep .ant-table-body::-webkit-scrollbar-corner{
+	border-radius: 10px;
+}
+
