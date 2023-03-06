@@ -80,11 +80,11 @@ export class TableComponent implements OnInit {
     } else {
       this.searchValue = '';
     }
+    this.listOfDisplayData = [...this.listOfData];
     this.search(data);
   }
 
   search(data: HeadTableInterface): void {
-    console.log(data);
     data.isSort = false;
     switch (data.key) {
       case 'brand':
@@ -126,6 +126,5 @@ export class TableComponent implements OnInit {
         );
         break;
     }
-    console.log(this.listOfDisplayData);
   }
 }
