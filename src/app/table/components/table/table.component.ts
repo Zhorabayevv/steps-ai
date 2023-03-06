@@ -84,33 +84,34 @@ export class TableComponent implements OnInit {
   }
 
   search(data: HeadTableInterface): void {
+    console.log(data);
     data.isSort = false;
     switch (data.key) {
       case 'brand':
-        this.listOfDisplayData = this.listOfData.filter(
+        this.listOfDisplayData = this.listOfDisplayData.filter(
           (item: TableInterface) => item.brand.indexOf(this.searchValue) !== -1
         );
         break;
       case 'vender_code':
-        this.listOfDisplayData = this.listOfData.filter(
+        this.listOfDisplayData = this.listOfDisplayData.filter(
           (item: TableInterface) =>
             item.vender_code.toString().indexOf(this.searchValue) !== -1
         );
         break;
       case 'name_of_product':
-        this.listOfDisplayData = this.listOfData.filter(
+        this.listOfDisplayData = this.listOfDisplayData.filter(
           (item: TableInterface) =>
             item.name_of_product.indexOf(this.searchValue) !== -1
         );
         break;
       case 'price':
-        this.listOfDisplayData = this.listOfData.filter(
+        this.listOfDisplayData = this.listOfDisplayData.filter(
           (item: TableInterface) =>
             item.price.toString().indexOf(this.searchValue) !== -1
         );
         break;
       case 'availability':
-        this.listOfDisplayData = this.listOfData.filter(
+        this.listOfDisplayData = this.listOfDisplayData.filter(
           (item: TableInterface) =>
             item.availability ===
             (this.searchAvailability
@@ -119,11 +120,12 @@ export class TableComponent implements OnInit {
         );
         break;
       case 'quantity':
-        this.listOfDisplayData = this.listOfData.filter(
+        this.listOfDisplayData = this.listOfDisplayData.filter(
           (item: TableInterface) =>
             item.quantity.toString().indexOf(this.searchValue) !== -1
         );
         break;
     }
+    console.log(this.listOfDisplayData);
   }
 }
